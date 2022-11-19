@@ -25,9 +25,10 @@
             tools:text="@tools:sample/lorem" />
 
         <Space
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:backgroundTint="@color/gray_200" />
 
         <ImageView
             android:id="@+id/tickIcon"
@@ -43,5 +44,5 @@
         android:layout_width="match_parent"
         android:layout_height="1pt"
         android:layout_marginTop="4pt"
-        app:dividerColor="@color/gray_300" />
+        app:dividerColor="@color/gray_200" />
 </LinearLayout>

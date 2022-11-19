@@ -25,11 +25,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // initialize medicines
-        Medicine m1 = new Medicine("med 1", "", "", "");
-        Medicine m2 = new Medicine("med 2", "", "", "");
-        Medicine m3 = new Medicine("med 3", "", "", "");
-        Medicine m4 = new Medicine("med 4", "", "", "");
-        wikiMedicines = WikiMedicineDb.getInstance();
+        Medicine m1 = new Medicine("Medicine 1", "Take with a cup of water", "", "");
+        Medicine m2 = new Medicine("Medicine 2", "Take with a cup of salt", "", "");
+        Medicine m3 = new Medicine("Medicine 3", "Take with a cup of honey", "", "");
+        Medicine m4 = new Medicine("Medicine 4", "Take with a cup of sugar", "", "");
+        wikiMedicines = MedicineWikiDb.getInstance();
         wikiMedicines.add(m1);
         wikiMedicines.add(m2);
         wikiMedicines.add(m3);
@@ -56,8 +56,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onCreateMedicine(View view) {
-        Intent intent = new Intent(this, CreateMedActivity.class);
-        startActivityForResult(intent, 100);
+        Intent intent = new Intent(this, MedicineWikiActivity.class);
+        startActivity(intent);
     }
 
     @Override

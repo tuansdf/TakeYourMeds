@@ -25,7 +25,7 @@ public class DailyMedicineRVAdapter extends RecyclerView.Adapter<DailyMedicineRV
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.med_list_item, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.daily_medicine_list_item, parent, false);
         ViewHolder holder = new ViewHolder(view);
         return holder;
     }

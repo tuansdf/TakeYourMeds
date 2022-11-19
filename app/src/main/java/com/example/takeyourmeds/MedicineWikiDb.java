@@ -3,10 +3,10 @@ package com.example.takeyourmeds;
 import java.util.ArrayList;
 
 // a very poorly implemented database
-public class WikiMedicineDb {
+public class MedicineWikiDb {
     private static ArrayList<Medicine> instance;
 
-    private WikiMedicineDb() {}
+    private MedicineWikiDb() {}
 
     public static ArrayList<Medicine> getInstance() {
         if (instance == null) {

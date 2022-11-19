@@ -44,7 +44,7 @@
             android:paddingTop="5pt"
             android:paddingEnd="7pt"
             android:paddingBottom="5pt"
-            tools:listitem="@layout/med_list_item" />
+            tools:listitem="@layout/daily_medicine_list_item" />
 
     </androidx.cardview.widget.CardView>
 

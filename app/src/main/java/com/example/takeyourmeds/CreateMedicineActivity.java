@@ -7,13 +7,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
-public class CreateMedActivity extends AppCompatActivity {
+public class CreateMedicineActivity extends AppCompatActivity {
     private EditText editMedName, editHtu, editDrNote, editPNote;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create_med);
+        setContentView(R.layout.activity_create_medicine);
 
         editMedName = (EditText) findViewById(R.id.editMedName);
         editHtu = (EditText) findViewById(R.id.editHtu);
