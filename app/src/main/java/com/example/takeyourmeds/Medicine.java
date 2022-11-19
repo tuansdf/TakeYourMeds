@@ -44,4 +44,14 @@ public class Medicine {
     public void setPersonalNote(String personalNote) {
         this.personalNote = personalNote;
     }
+
+    @Override
+    public String toString() {
+        return "Medicine{" +
+                "name='" + name + '\'' +
+                ", howToUse='" + howToUse + '\'' +
+                ", doctorNote='" + doctorNote + '\'' +
+                ", personalNote='" + personalNote + '\'' +
+                '}';
+    }
 }

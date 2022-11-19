@@ -144,6 +144,6 @@
         android:backgroundTint="@color/primary_500"
         android:onClick="onFinish"
         android:padding="5pt"
-        android:text="Finish" />
+        android:text="Submit" />
 
 </LinearLayout>

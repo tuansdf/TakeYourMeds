@@ -1,10 +1,5 @@
 package com.example.takeyourmeds;
 
-import androidx.activity.result.ActivityResult;
-import androidx.activity.result.ActivityResultCallback;
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContract;
-import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -12,20 +7,17 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
-    private RecyclerView medRV;
+    private RecyclerView dailyMedicineRV;
 
-    private MedRVAdapter adapter;
-    private final ArrayList<Medicine> wikiMedicines = new ArrayList<>();
-    private final ArrayList<Medicine> todayMedicines = new ArrayList<>();
+    private DailyMedicineRVAdapter adapter;
+    private ArrayList<Medicine> wikiMedicines;
+    private ArrayList<DailyMedicine> dailyMedicines;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,24 +25,34 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // initialize medicines
-        wikiMedicines.add(new Medicine("med 1", "", "", ""));
-        wikiMedicines.add(new Medicine("med 2", "", "", ""));
-        wikiMedicines.add(new Medicine("med 3", "", "", ""));
-        wikiMedicines.add(new Medicine("med 4", "", "", ""));
+        Medicine m1 = new Medicine("med 1", "", "", "");
+        Medicine m2 = new Medicine("med 2", "", "", "");
+        Medicine m3 = new Medicine("med 3", "", "", "");
+        Medicine m4 = new Medicine("med 4", "", "", "");
+        wikiMedicines = WikiMedicineDb.getInstance();
+        wikiMedicines.add(m1);
+        wikiMedicines.add(m2);
+        wikiMedicines.add(m3);
+        wikiMedicines.add(m4);
 
-        todayMedicines.add(wikiMedicines.get(0));
-        todayMedicines.add(wikiMedicines.get(1));
-        todayMedicines.add(wikiMedicines.get(2));
-        todayMedicines.add(wikiMedicines.get(3));
+        DailyMedicine dm1 = new DailyMedicine(m1, true);
+        DailyMedicine dm2 = new DailyMedicine(m2, false);
+        DailyMedicine dm3 = new DailyMedicine(m3, false);
+        DailyMedicine dm4 = new DailyMedicine(m4, false);
+        dailyMedicines = DailyMedicineDb.getInstance();
+        dailyMedicines.add(dm1);
+        dailyMedicines.add(dm2);
+        dailyMedicines.add(dm3);
+        dailyMedicines.add(dm4);
 
         // main
-        medRV = findViewById(R.id.medRV);
+        dailyMedicineRV = findViewById(R.id.medRV);
 
-        adapter = new MedRVAdapter(this);
-        adapter.setMedicines(todayMedicines);
+        adapter = new DailyMedicineRVAdapter(this);
+        adapter.setDailyMedicines(dailyMedicines);
 
-        medRV.setAdapter(adapter);
-        medRV.setLayoutManager(new LinearLayoutManager(this));
+        dailyMedicineRV.setAdapter(adapter);
+        dailyMedicineRV.setLayoutManager(new LinearLayoutManager(this));
     }
 
     public void onCreateMedicine(View view) {
@@ -67,8 +69,9 @@ public class MainActivity extends AppCompatActivity {
                 String htu = (String) data.getExtras().get("htu");
                 String drNote = (String) data.getExtras().get("drNote");
                 String pNote = (String) data.getExtras().get("pNote");
-                todayMedicines.add(new Medicine(name, htu, drNote, pNote));
-                adapter.setMedicines(todayMedicines);
+                Medicine m = new Medicine(name, htu, drNote, pNote);
+                dailyMedicines.add(new DailyMedicine(m, false));
+                adapter.setDailyMedicines(dailyMedicines);
             }
         }
     }
