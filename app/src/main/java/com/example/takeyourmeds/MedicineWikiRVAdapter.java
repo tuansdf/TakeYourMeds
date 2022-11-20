@@ -41,7 +41,7 @@ public class MedicineWikiRVAdapter extends RecyclerView.Adapter<MedicineWikiRVAd
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, MedicineDetailActivity.class);
-                intent.putExtra("medicine", medicines.get(position));
+                intent.putExtra("medicine", medicines.get(holder.getAdapterPosition()));
                 context.startActivity(intent);
             }
         });
