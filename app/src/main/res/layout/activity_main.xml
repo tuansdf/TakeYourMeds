@@ -12,7 +12,6 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="5pt"
         android:text="Welcome back,"
         android:textColor="@color/primary"
         android:textSize="38sp"
@@ -21,6 +20,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="2pt"
         android:text="remember to take these:"
         android:textColor="@color/primary_400"
         android:textSize="20sp"
@@ -29,7 +29,7 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10pt"
+        android:layout_marginTop="8pt"
         android:layout_weight="1"
         android:paddingTop="5pt"
         android:paddingBottom="5pt"

@@ -16,8 +16,8 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView dailyMedicineRV;
 
     private DailyMedicineRVAdapter adapter;
-    private ArrayList<Medicine> wikiMedicines;
-    private ArrayList<DailyMedicine> dailyMedicines;
+    private MedicineWikiDb medicineWikiDb;
+    private DailyMedicineDb dailyMedicineDb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,21 +25,35 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // initialize medicines
+        medicineWikiDb = MedicineWikiDb.getInstance();
+        ArrayList<Medicine> medicines = medicineWikiDb.getMedicines();
+
         Medicine m1 = new Medicine("Medicine 1", "Take with a cup of water", "", "");
         Medicine m2 = new Medicine("Medicine 2", "Take with a cup of salt", "", "");
         Medicine m3 = new Medicine("Medicine 3", "Take with a cup of honey", "", "");
         Medicine m4 = new Medicine("Medicine 4", "Take with a cup of sugar", "", "");
-        wikiMedicines = MedicineWikiDb.getInstance();
-        wikiMedicines.add(m1);
-        wikiMedicines.add(m2);
-        wikiMedicines.add(m3);
-        wikiMedicines.add(m4);
+        Medicine nm1 = new Medicine("Not a Medicine 1", "Take with a cup of sugar", "", "");
+        Medicine nm2 = new Medicine("Not a Medicine 2", "Take with a cup of sugar", "", "");
+        Medicine nm3 = new Medicine("Not a Medicine 3", "Take with a cup of sugar", "", "");
+        Medicine nm4 = new Medicine("Not a Medicine 4", "Take with a cup of sugar", "", "");
+
+        medicines.add(m1);
+        medicines.add(m2);
+        medicines.add(m3);
+        medicines.add(m4);
+        medicines.add(nm1);
+        medicines.add(nm2);
+        medicines.add(nm3);
+        medicines.add(nm4);
+
+        dailyMedicineDb = DailyMedicineDb.getInstance();
+        ArrayList<DailyMedicine> dailyMedicines = dailyMedicineDb.getDailyMedicines();
 
         DailyMedicine dm1 = new DailyMedicine(m1, true);
         DailyMedicine dm2 = new DailyMedicine(m2, false);
-        DailyMedicine dm3 = new DailyMedicine(m3, false);
-        DailyMedicine dm4 = new DailyMedicine(m4, false);
-        dailyMedicines = DailyMedicineDb.getInstance();
+        DailyMedicine dm3 = new DailyMedicine(nm3, false);
+        DailyMedicine dm4 = new DailyMedicine(nm4, false);
+
         dailyMedicines.add(dm1);
         dailyMedicines.add(dm2);
         dailyMedicines.add(dm3);
@@ -65,6 +79,7 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 100) {
             if (resultCode == Activity.RESULT_OK) {
+                ArrayList<DailyMedicine> dailyMedicines = dailyMedicineDb.getDailyMedicines();
                 String name = (String) data.getExtras().get("medName");
                 String htu = (String) data.getExtras().get("htu");
                 String drNote = (String) data.getExtras().get("drNote");

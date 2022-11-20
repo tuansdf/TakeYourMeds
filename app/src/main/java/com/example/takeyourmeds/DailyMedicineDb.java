@@ -4,14 +4,21 @@ import java.util.ArrayList;
 
 // a very poorly implemented database
 public class DailyMedicineDb {
-    private static ArrayList<DailyMedicine> instance;
+    private static DailyMedicineDb instance;
+    private ArrayList<DailyMedicine> dailyMedicines;
 
-    private DailyMedicineDb() {}
+    private DailyMedicineDb() {
+        dailyMedicines = new ArrayList<>();
+    }
 
-    public static ArrayList<DailyMedicine> getInstance() {
+    public static DailyMedicineDb getInstance() {
         if (instance == null) {
-            instance = new ArrayList<>();
+            instance = new DailyMedicineDb();
         }
         return instance;
+    }
+
+    public ArrayList<DailyMedicine> getDailyMedicines() {
+        return dailyMedicines;
     }
 }
