@@ -4,22 +4,24 @@ import java.util.ArrayList;
 import java.util.Locale;
 
 // a very poorly implemented database as a singleton
-public class MedicineWikiDb {
-    private static MedicineWikiDb instance;
-    private ArrayList<Medicine> medicines;
+public class MedicineDb {
+    private static MedicineDb instance;
+    private final ArrayList<Medicine> medicines;
+    private final ArrayList<DailyMedicine> dailyMedicines;
 
-    private MedicineWikiDb() {
+    private MedicineDb() {
         medicines = new ArrayList<>();
+        dailyMedicines = new ArrayList<>();
     }
 
-    public static MedicineWikiDb getInstance() {
+    public static MedicineDb getInstance() {
         if (instance == null) {
-            instance = new MedicineWikiDb();
+            instance = new MedicineDb();
         }
         return instance;
     }
 
-    public ArrayList<Medicine> search(String name) {
+    public ArrayList<Medicine> searchWiki(String name) {
         ArrayList<Medicine> result = new ArrayList<>();
         int length = medicines.size();
 
@@ -35,5 +37,8 @@ public class MedicineWikiDb {
 
     public ArrayList<Medicine> getMedicines() {
         return medicines;
+    }
+    public ArrayList<DailyMedicine> getDailyMedicines() {
+        return dailyMedicines;
     }
 }

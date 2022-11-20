@@ -1,14 +1,23 @@
 package com.example.takeyourmeds;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
+
+import com.example.takeyourmeds.databinding.ActivityMainBinding;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
 
 import java.util.ArrayList;
 
@@ -16,16 +25,19 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView dailyMedicineRV;
 
     private DailyMedicineRVAdapter adapter;
-    private MedicineWikiDb medicineWikiDb;
-    private DailyMedicineDb dailyMedicineDb;
+    private MedicineDb medicineWikiDb;
+
+    private ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
         // initialize medicines
-        medicineWikiDb = MedicineWikiDb.getInstance();
+        medicineWikiDb = MedicineDb.getInstance();
+
         ArrayList<Medicine> medicines = medicineWikiDb.getMedicines();
 
         Medicine m1 = new Medicine("Medicine 1", "Take with a cup of water", "", "");
@@ -46,48 +58,41 @@ public class MainActivity extends AppCompatActivity {
         medicines.add(nm3);
         medicines.add(nm4);
 
-        dailyMedicineDb = DailyMedicineDb.getInstance();
-        ArrayList<DailyMedicine> dailyMedicines = dailyMedicineDb.getDailyMedicines();
+        ArrayList<DailyMedicine> dailyMedicines = medicineWikiDb.getDailyMedicines();
 
         DailyMedicine dm1 = new DailyMedicine(m1, true);
         DailyMedicine dm2 = new DailyMedicine(m2, false);
         DailyMedicine dm3 = new DailyMedicine(nm3, false);
         DailyMedicine dm4 = new DailyMedicine(nm4, false);
+        DailyMedicine dm5 = new DailyMedicine(m1, false);
 
         dailyMedicines.add(dm1);
         dailyMedicines.add(dm2);
         dailyMedicines.add(dm3);
         dailyMedicines.add(dm4);
+        dailyMedicines.add(dm5);
 
-        // main
-        dailyMedicineRV = findViewById(R.id.medRV);
+        // default fragment when opening the app
+        replaceFragment(new DailyMedicineFragment());
 
-        adapter = new DailyMedicineRVAdapter(this);
-        adapter.setDailyMedicines(dailyMedicines);
-
-        dailyMedicineRV.setAdapter(adapter);
-        dailyMedicineRV.setLayoutManager(new LinearLayoutManager(this));
-    }
-
-    public void onCreateMedicine(View view) {
-        Intent intent = new Intent(this, MedicineWikiActivity.class);
-        startActivity(intent);
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 100) {
-            if (resultCode == Activity.RESULT_OK) {
-                ArrayList<DailyMedicine> dailyMedicines = dailyMedicineDb.getDailyMedicines();
-                String name = (String) data.getExtras().get("medName");
-                String htu = (String) data.getExtras().get("htu");
-                String drNote = (String) data.getExtras().get("drNote");
-                String pNote = (String) data.getExtras().get("pNote");
-                Medicine m = new Medicine(name, htu, drNote, pNote);
-                dailyMedicines.add(new DailyMedicine(m, false));
-                adapter.setDailyMedicines(dailyMedicines);
+        // bind bottom navigation
+        binding.bottomNavigationView.setOnItemSelectedListener(item -> {
+            switch (item.getItemId()) {
+                case R.id.action_daily:
+                    replaceFragment(new DailyMedicineFragment());
+                    break;
+                case R.id.action_wiki:
+                    replaceFragment(new MedicineWikiFragment());
+                    break;
             }
-        }
+            return true;
+        });
+    }
+
+    private void replaceFragment(Fragment fragment) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.frameLayout, fragment);
+        fragmentTransaction.commit();
     }
 }
