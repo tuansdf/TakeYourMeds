@@ -1,4 +1,4 @@
-package com.example.takeyourmeds;
+package com.example.takeyourmeds.Activities;
 
 import android.os.Bundle;
 
@@ -8,6 +8,11 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.takeyourmeds.Models.DailyMedicine;
+import com.example.takeyourmeds.Adapters.DailyMedicineRVAdapter;
+import com.example.takeyourmeds.Models.Medicine;
+import com.example.takeyourmeds.Database.MedicineDb;
+import com.example.takeyourmeds.R;
 import com.example.takeyourmeds.databinding.ActivityMainBinding;
 
 import java.util.ArrayList;

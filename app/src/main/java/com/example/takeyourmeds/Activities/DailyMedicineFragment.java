@@ -1,4 +1,4 @@
-package com.example.takeyourmeds;
+package com.example.takeyourmeds.Activities;
 
 import android.os.Bundle;
 
@@ -9,6 +9,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.example.takeyourmeds.Models.DailyMedicine;
+import com.example.takeyourmeds.Adapters.DailyMedicineRVAdapter;
+import com.example.takeyourmeds.Database.MedicineDb;
+import com.example.takeyourmeds.R;
 
 import java.util.ArrayList;
 

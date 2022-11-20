@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="10pt"
-    tools:context=".CreateMedicineActivity">
+    tools:context=".Activities.CreateMedicineActivity">
 
     <Button
         android:layout_width="wrap_content"

@@ -1,16 +1,19 @@
-package com.example.takeyourmeds;
+package com.example.takeyourmeds.Adapters;
 
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.takeyourmeds.Activities.MedicineDetailActivity;
+import com.example.takeyourmeds.Models.Medicine;
+import com.example.takeyourmeds.R;
 
 import java.util.ArrayList;
 

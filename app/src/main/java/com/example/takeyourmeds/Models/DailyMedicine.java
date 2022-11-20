@@ -1,4 +1,6 @@
-package com.example.takeyourmeds;
+package com.example.takeyourmeds.Models;
+
+import com.example.takeyourmeds.Models.Medicine;
 
 public class DailyMedicine {
     private Medicine medicine;

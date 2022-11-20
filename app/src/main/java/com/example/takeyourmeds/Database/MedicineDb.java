@@ -1,4 +1,7 @@
-package com.example.takeyourmeds;
+package com.example.takeyourmeds.Database;
+
+import com.example.takeyourmeds.Models.DailyMedicine;
+import com.example.takeyourmeds.Models.Medicine;
 
 import java.util.ArrayList;
 import java.util.Locale;
@@ -8,8 +11,6 @@ public class MedicineDb {
     private static MedicineDb instance;
     private final ArrayList<Medicine> medicines;
     private final ArrayList<DailyMedicine> dailyMedicines;
-
-    private int medicineId = 0;
 
     private MedicineDb() {
         medicines = new ArrayList<>();

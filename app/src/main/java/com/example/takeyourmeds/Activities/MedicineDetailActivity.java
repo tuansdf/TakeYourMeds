@@ -1,4 +1,4 @@
-package com.example.takeyourmeds;
+package com.example.takeyourmeds.Activities;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -9,6 +9,11 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.takeyourmeds.Models.DailyMedicine;
+import com.example.takeyourmeds.Models.Medicine;
+import com.example.takeyourmeds.Database.MedicineDb;
+import com.example.takeyourmeds.R;
 
 public class MedicineDetailActivity extends AppCompatActivity {
 
