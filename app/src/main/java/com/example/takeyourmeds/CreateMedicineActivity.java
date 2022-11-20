@@ -30,4 +30,8 @@ public class CreateMedicineActivity extends AppCompatActivity {
         setResult(RESULT_OK, intent);
         finish();
     }
+
+    public void onCancel(View view) {
+        finish();
+    }
 }

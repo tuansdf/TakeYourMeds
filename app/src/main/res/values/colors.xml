@@ -18,6 +18,8 @@
     <color name="primary_400">#8B5CF6</color>
     <color name="primary_500">#7C3AED</color>
 
+    <color name="secondary">#1D5569</color>
+
     <color name="gray_100">#F9FAFB</color>
     <color name="gray_200">#F3F4F6</color>
     <color name="gray_300">#E5E7EB</color>

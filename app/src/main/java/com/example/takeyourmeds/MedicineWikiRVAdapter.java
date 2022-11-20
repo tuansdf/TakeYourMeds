@@ -1,6 +1,7 @@
 package com.example.takeyourmeds;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,6 +36,15 @@ public class MedicineWikiRVAdapter extends RecyclerView.Adapter<MedicineWikiRVAd
         Medicine med = medicines.get(position);
         holder.textMedName.setText(med.getName());
         holder.textHtu.setText(med.getHowToUse());
+
+        holder.parent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, MedicineDetailActivity.class);
+                intent.putExtra("medicine", medicines.get(position));
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override

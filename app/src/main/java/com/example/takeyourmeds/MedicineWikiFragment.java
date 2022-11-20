@@ -21,6 +21,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -80,7 +81,7 @@ public class MedicineWikiFragment extends Fragment {
             }
         });
 
-        Button createButton = v.findViewById(R.id.createButton);
+        ImageButton createButton = v.findViewById(R.id.createButton);
         createButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

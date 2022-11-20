@@ -9,6 +9,8 @@ public class MedicineDb {
     private final ArrayList<Medicine> medicines;
     private final ArrayList<DailyMedicine> dailyMedicines;
 
+    private int medicineId = 0;
+
     private MedicineDb() {
         medicines = new ArrayList<>();
         dailyMedicines = new ArrayList<>();
@@ -35,6 +37,9 @@ public class MedicineDb {
         return result;
     }
 
+    public void insertMedicine() {
+
+    }
     public ArrayList<Medicine> getMedicines() {
         return medicines;
     }
