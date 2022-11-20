@@ -84,6 +84,7 @@
             android:id="@+id/medDoctor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:padding="5pt"
             android:textColor="@color/gray_900" />
     </androidx.cardview.widget.CardView>
 
@@ -105,6 +106,7 @@
             android:id="@+id/medPersonal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:padding="5pt"
             android:textColor="@color/gray_900" />
     </androidx.cardview.widget.CardView>
 

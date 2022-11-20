@@ -18,7 +18,6 @@
         android:paddingStart="5pt"
         android:paddingEnd="5pt">
 
-
         <TextView
             android:id="@+id/textMedName"
             android:layout_width="wrap_content"
@@ -34,6 +33,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="2pt"
+            android:ellipsize="end"
+            android:maxLines="2"
             android:text="how to use"
             android:textColor="@color/gray_800"
             tools:text="@tools:sample/lorem" />
@@ -44,6 +45,6 @@
         android:layout_width="match_parent"
         android:layout_height="1pt"
         android:layout_marginTop="6pt"
-        app:dividerColor="@color/gray_200" />
+        app:dividerColor="@color/gray_300" />
 
 </LinearLayout>

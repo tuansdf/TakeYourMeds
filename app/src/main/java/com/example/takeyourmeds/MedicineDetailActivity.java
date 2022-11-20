@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -57,6 +58,7 @@ public class MedicineDetailActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialogInterface, int i) {
                         if (medicine != null) {
                             medicineDb.getDailyMedicines().add(new DailyMedicine(medicine, false));
+                            Toast.makeText(MedicineDetailActivity.this, medicine.getName() + " has been added to the daily list", Toast.LENGTH_SHORT).show();
                         }
                         dialogInterface.dismiss();
                     }
