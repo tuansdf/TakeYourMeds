@@ -17,6 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import com.example.takeyourmeds.Models.Medicine;
 import com.example.takeyourmeds.Database.MedicineDb;
@@ -109,6 +110,8 @@ public class MedicineWikiFragment extends Fragment {
                 medicines.add(m);
 
                 adapter.setMedicines(medicines);
+
+                Toast.makeText(context, m.getName() + " has been added to the wiki", Toast.LENGTH_SHORT).show();
             }
         }
     }
